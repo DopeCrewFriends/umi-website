@@ -24,38 +24,41 @@ A dark, atmospheric website inspired by the PS1 low-poly haunted house game "Ren
 
 ### Installation
 
-1. Install root dependencies:
+1. Navigate to the client directory:
+```bash
+cd client
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Install all dependencies (root, server, and client):
-```bash
-npm run install-all
-```
-
 ### Running the Application
 
-#### Development Mode (runs both server and client):
+#### Development Mode:
 ```bash
-npm run dev
+cd client
+npm start
 ```
 
-This will start:
-- Backend server on `http://localhost:5000`
-- React frontend on `http://localhost:3000`
+This will start the React frontend on `http://localhost:3000`
 
-#### Run Separately:
-
-**Backend only:**
+#### Build for Production:
 ```bash
-npm run server
+cd client
+npm run build
 ```
 
-**Frontend only:**
-```bash
-npm run client
-```
+### Vercel Deployment
+
+The project is configured for Vercel deployment:
+- **Root Directory**: `client`
+- **Build Command**: `npm run build`
+- **Output Directory**: `build`
+- **Install Command**: `npm install`
+
+Simply connect your GitHub repository to Vercel and it will automatically deploy.
 
 ## Project Structure
 
