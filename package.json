@@ -1,0 +1,19 @@
+{
+  "name": "umi-website",
+  "version": "1.0.0",
+  "description": "Rental-inspired haunted house themed website",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server/index.js",
+    "client": "cd client && npm start",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": ["react", "nodejs", "rental", "haunted-house"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+

@@ -1,0 +1,115 @@
+.App {
+  min-height: 100vh;
+  position: relative;
+  background-color: #0a0503;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Blurred background layer */
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(12px);
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* Darken overlay */
+.App::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 5, 3, 0.65);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scene-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  z-index: 2;
+}
+
+.glass-buttons-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 3;
+}
+
+/* Candle glow effect - warm orange/yellow glow on edges */
+.scene-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at top left, rgba(255, 140, 0, 0.3) 0%, transparent 10%),
+    radial-gradient(circle at top right, rgba(255, 200, 0, 0.25) 0%, transparent 10%),
+    radial-gradient(circle at bottom left, rgba(255, 140, 0, 0.3) 0%, transparent 10%),
+    radial-gradient(circle at bottom right, rgba(255, 200, 0, 0.25) 0%, transparent 10%),
+    linear-gradient(to right, rgba(255, 140, 0, 0.2) 0%, transparent 3%, transparent 97%, rgba(255, 140, 0, 0.2) 100%),
+    linear-gradient(to bottom, rgba(255, 200, 0, 0.15) 0%, transparent 3%, transparent 97%, rgba(255, 200, 0, 0.15) 100%);
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(15px);
+  animation: candleGlow 3s ease-in-out infinite;
+}
+
+@keyframes candleGlow {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+
+/* Low-poly PS1 style effects */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Additional atmospheric darkening at edges */
+.scene-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(10, 5, 3, 0.3) 50%,
+    rgba(10, 5, 3, 0.7) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
